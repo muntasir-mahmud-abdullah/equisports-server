@@ -26,6 +26,7 @@ async function run() {
     const equipmentsCollection = client
       .db("equipmentsDB")
       .collection("equipments");
+    const usersCollection = client.db("equipmentsDB").collection("users");
     //show created data to client
     app.get("/equipments", async (req, res) => {
       const cursor = equipmentsCollection.find();
@@ -74,6 +75,20 @@ async function run() {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await equipmentsCollection.deleteOne(query);
+      res.send(result);
+    });
+
+    //Users related apis
+    app.get("/users", async (req, res) => {
+      const cursor = usersCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    app.post("/users", async (req, res) => {
+      const newUser = req.body;
+      console.log("creating new user", newUser);
+      const result = await usersCollection.insertOne(newUser);
       res.send(result);
     });
 
