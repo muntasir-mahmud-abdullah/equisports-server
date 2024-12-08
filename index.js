@@ -42,7 +42,7 @@ async function run() {
     //receive in server from client
     app.post("/equipments", async (req, res) => {
       const newEquipment = req.body;
-      console.log(newEquipment);
+      // console.log(newEquipment);
       const result = await equipmentsCollection.insertOne(newEquipment);
       res.send(result);
     });
@@ -98,16 +98,16 @@ async function run() {
 
     app.post("/users", async (req, res) => {
       const newUser = req.body;
-      console.log("creating new user", newUser);
+      // console.log("creating new user", newUser);
       const result = await usersCollection.insertOne(newUser);
       res.send(result);
     });
 
     // Send a ping to confirm a successful connection
     // await client.db("admin").command({ ping: 1 });
-    console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
-    );
+    // console.log(
+    //   "Pinged your deployment. You successfully connected to MongoDB!"
+    // );
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
@@ -120,5 +120,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`equisports server is running on port:${port}`);
+  // console.log(`equisports server is running on port:${port}`);
 });
