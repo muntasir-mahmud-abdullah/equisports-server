@@ -71,6 +71,17 @@ async function run() {
       );
       res.send(result);
     });
+    // app.patch('/equipments/:email',async(req,res)=> {
+    //   const email = req.params.email;
+    //   const filter = {email};
+    //   const updatedDoc = {
+    //     $set: {
+
+    //     }
+    //   }
+    //   const result = await equipmentsCollection.updateOne(filter,updatedDoc);
+    //   res.send(result);
+    // })
     app.delete("/equipments/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
